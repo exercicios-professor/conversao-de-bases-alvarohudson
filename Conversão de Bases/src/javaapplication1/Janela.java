@@ -133,17 +133,71 @@ public class Janela extends javax.swing.JDialog {
 
         //BINÁRIO -> HEXADECIMAL 
         if (boxEntrada.getSelectedIndex() == 0 && boxSaida.getSelectedIndex() == 2) {
-
+               
         }
 
         //DECIMAL -> BINÁRIO
         if (boxEntrada.getSelectedIndex() == 1 && boxSaida.getSelectedIndex() == 0) {
-
-        }
+                String entrada = textEntrada.getText();
+               
+               int valorEntrada = Integer.valueOf(entrada);
+               System.out.println( valorEntrada );
+               
+               int q;
+               String saida = "";
+               
+               do{
+                q = valorEntrada / 2;
+                    int r = valorEntrada % 2;
+                       
+                    saida = r + saida;
+                    
+                    valorEntrada = q;
+                           // System.out.println(q);
+               } while ( q >= 2 );
+                saida = q + saida;
+                System.out.println( saida );
+                textSaida.setText(saida);
+                      
+               }
+        
 
         //DECIMAL -> HEXADECIMAL 
         if (boxEntrada.getSelectedIndex() == 1 && boxSaida.getSelectedIndex() == 2) {
-
+            String entrada = textEntrada.getText();    
+            int valorEntrada = Integer.valueOf(entrada);
+               System.out.println( valorEntrada );
+               
+               int q;
+               String saida = "";
+               
+               do{
+                q = valorEntrada / 16;
+                    int r = valorEntrada % 16;
+                    
+                    if(r == 10)
+                       saida = "A" + saida;
+                    if(r == 11)
+                       saida = "B" + saida;
+                    if(r == 12)
+                       saida = "C" + saida;
+                    if(r == 13)
+                       saida = "D" + saida;
+                    if(r == 14)
+                       saida = "E" + saida;
+                    if(r == 15)
+                       saida = "F" + saida;
+                    if ( r < 10)
+                        saida = r + saida;
+                    
+                    
+                    valorEntrada = q;
+                           // System.out.println(q);
+               } while ( q >= 16 );
+                saida = q + saida;
+                
+                System.out.println( saida );
+                textSaida.setText(saida);
         }
 
         //HEXADECIMAL -> BINÁRIO
@@ -156,8 +210,7 @@ public class Janela extends javax.swing.JDialog {
 
         }
 
-        textEntrada.setText("OK!");
-        textSaida.setText("OK!");
+       
     }//GEN-LAST:event_converterActionPerformed
 
     /**
